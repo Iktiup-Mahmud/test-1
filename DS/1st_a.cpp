@@ -14,11 +14,27 @@ public:
     }
 };
 
+
+// using recursion
 int counter(Node *head, int res)
 {
     if (head == NULL)
         return res;
     return counter(head->next, res + 1);
+}
+
+
+// using normal way
+int counter2(Node *head)
+{
+    Node *cur = head;
+    int n = 0;
+    while (cur != NULL)
+    {
+        n++;
+        cur = cur->next;
+    }
+    return n;
 }
 
 int main()
@@ -37,7 +53,8 @@ int main()
     c->next = d;
     d->next = e;
 
-    cout << counter(head, 0) << endl;
+    // cout << counter(head, 0) << endl;
+    cout << counter2(head) << endl;
 
     return 0;
 }

@@ -14,6 +14,7 @@ public:
     }
 };
 
+// using recursion
 int search_val(Node *head, int f_v, int cnt)
 {
     if (head == NULL)
@@ -25,6 +26,21 @@ int search_val(Node *head, int f_v, int cnt)
     }
 
     return search_val(head->next, f_v, cnt + 1);
+}
+
+// using normal way
+int search_val2(Node *head, int f_v)
+{
+    Node *tmp = head;
+    int ans = 0;
+    while (tmp)
+    {
+        ans++;
+        if (tmp->val == f_v)
+            return ans;
+        tmp = tmp->next;
+    }
+    return 0;
 }
 
 int main()
@@ -43,7 +59,8 @@ int main()
     c->next = d;
     d->next = e;
 
-    cout << search_val(head, 60, 0) << endl;
+    // cout << search_val(head, 60, 0) << endl;
+    cout << search_val2(head, 40) << endl;
 
     return 0;
 }
